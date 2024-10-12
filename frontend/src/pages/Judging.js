@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaInfoCircle } from 'react-icons/fa';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import usdcIcon from '../assets/images/usdc.png';
+import usdcIcon from '../assets/images/usdc.webp';
 import { UserContext } from '../contexts/UserContext';
 import '../styles/Home.css';
 
@@ -266,16 +266,16 @@ const Judging = () => {
                   <div className={`audit-info ${status}`}>
                     <div className="audit-price-container">
                       <div className="audit-price">
-                        <img src={usdcIcon} alt="USDC" className="usdc-icon" />
+                        <img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" />
                         <span>{audit.reward}</span>
                         <FaInfoCircle className="info-icon" />
                         <div className="info-tooltip">
                           <strong>Rewards for this contest comprise a pool broken down into the following categories:</strong>
                           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <div><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.5)} Feature</div>
-                            <div><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.1)} Optimization</div>
-                            <div><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.2)} Judging</div>
-                            <div><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.2)} Bugs</div>
+                            <div><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.5)} Feature</div>
+                            <div><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.1)} Optimization</div>
+                            <div><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.2)} Judging</div>
+                            <div><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(audit.reward * 0.2)} Bugs</div>
                           </div>
                         </div>
                       </div>
@@ -294,7 +294,7 @@ const Judging = () => {
                   <div className="audit-main">
                     <div className="audit-header">
                       <div className="audit-image">
-                        <img src={audit.image} alt={audit.name} />
+                        <img src={audit.image} alt={audit.name} loading="lazy"/>
                       </div>
                       <h2>{audit.name}</h2>
                       <div className="audit-tags">

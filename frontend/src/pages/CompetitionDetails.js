@@ -6,7 +6,7 @@ import { UserContext } from '../contexts/UserContext';
 import { Diff, Hunk, parseDiff } from 'react-diff-view';
 import 'react-diff-view/style/index.css';
 import '../styles/CompetitionDetails.css';
-import usdcIcon from '../assets/images/usdc.png';
+import usdcIcon from '../assets/images/usdc.webp';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import remarkGfm from 'remark-gfm';
 
@@ -438,19 +438,19 @@ const CompetitionDetails = () => {
         <div className="reward-container">
           <div className="reward-item container">
             <span className="reward-tag feature">Feature</span>
-            <span><img src={usdcIcon} alt="USDC" className="usdc-icon" />{rewards.feature}</span>
+            <span><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" />{rewards.feature}</span>
           </div>
           <div className="reward-item container">
             <span className="reward-tag optimization">Optimization</span>
-            <span><img src={usdcIcon} alt="USDC" className="usdc-icon" />{rewards.optimization}</span>
+            <span><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" />{rewards.optimization}</span>
           </div>
           <div className="reward-item container">
             <span className="reward-tag bug">Bug</span>
-            <span><img src={usdcIcon} alt="USDC" className="usdc-icon" />{rewards.bugs}</span>
+            <span><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" />{rewards.bugs}</span>
           </div>
           <div className="reward-item container">
             <span className="reward-tag judging">Reviewing</span>
-            <span><img src={usdcIcon} alt="USDC" className="usdc-icon" />{rewards.judging}</span>
+            <span><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" />{rewards.judging}</span>
           </div>
         </div>
       </div>
@@ -473,7 +473,7 @@ const CompetitionDetails = () => {
               <FaGlobe size={30} />
             </a>
           </div>
-          <img src={competition.image} alt={competition.name} className="competition-image" />
+          <img src={competition.image}  loading="lazy"  alt={competition.name} className="competition-image" />
           <div className="header-content">
             <div className="title-subtitle">
               <h1 className="competition-title">{competition.name}</h1>
@@ -496,16 +496,16 @@ const CompetitionDetails = () => {
           <div className="info-left">
             <div className="price">
               <div className="price-container">
-                <img src={usdcIcon} alt="USDC" className="usdc-icon" />
+                <img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" />
                 <span>{competition.reward}</span>
                 <FaInfoCircle className="info-icon" />
                 <div className="info-tooltip">
                   <strong>Rewards for this contest comprise a pool broken down into the following categories:</strong>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <div ><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.5)} Feature</div>
-                    <div ><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.1)} Optimization</div>
-                    <div><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.2)} Reviewing</div>
-                    <div><img src={usdcIcon} alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.2)} Bugs</div>
+                    <div ><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.5)} Feature</div>
+                    <div ><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.1)} Optimization</div>
+                    <div><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.2)} Reviewing</div>
+                    <div><img src={usdcIcon} loading="lazy"  alt="USDC" className="usdc-icon" /> {Math.round(competition.reward * 0.2)} Bugs</div>
                   </div>
                 </div>
               </div>

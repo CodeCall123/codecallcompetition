@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaCaretDown } from 'react-icons/fa';
-import logo from '../assets/images/betalogo.png';
+import logo from '../assets/images/betalogo.webp';
 import { UserContext } from '../contexts/UserContext';
 
 const Navbar = styled.nav`
@@ -157,7 +157,7 @@ const NavBar = () => {
   return (
     <Navbar>
       <Logo to="/">
-        <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" loading="lazy" />
       </Logo>
       <NavLinks>
         <NavLink>

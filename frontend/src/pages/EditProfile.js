@@ -99,7 +99,7 @@ const handleAvatarChange = async (e) => {
       <h1 className="title">Edit Profile</h1>
       <form className="profile-form" onSubmit={handleSubmit}>
         <div className="avatar-section">
-          <img src={avatar || 'https://img.freepik.com/free-psd/3d-render-avatar-character_23-2150611746.jpg'} alt="Avatar" className="avatar" />
+          <img src={avatar || 'https://img.freepik.com/free-psd/3d-render-avatar-character_23-2150611746.jpg'} loading="lazy" alt="Avatar" className="avatar" />
           <input type="file" id="avatar-upload" onChange={handleAvatarChange} hidden />
 
         </div>

@@ -328,7 +328,7 @@ const Training = () => {
                   <div className="audit-main">
                     <div className="audit-header">
                       <div className="audit-image">
-                        <img src={audit.image} alt={audit.name} />
+                        <img src={audit.image} alt={audit.name} loading="lazy"/>
                       </div>
                       <h2>{audit.name}</h2>
                       <div className="audit-tags">

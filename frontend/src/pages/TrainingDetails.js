@@ -399,7 +399,7 @@ const TrainingDetails = () => {
               <FaGithub size={30} />
             </a>
           </div>
-          <img src={training.image} alt={training.name} className="training-image" />
+          <img src={training.image} alt={training.name} className="training-image"   loading="lazy"/>
           <div className="header-content">
             <div className="title-subtitle">
               <h1 className="training-title">{training.name}</h1>
