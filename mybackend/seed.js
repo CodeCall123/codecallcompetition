@@ -1,10 +1,15 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const Competition = require('./models/Competition');
-require('dotenv').config();
 
 const seedData = async () => {
-  await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+  await mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   console.log('Connected to MongoDB.');
 
@@ -36,7 +41,7 @@ const seedData = async () => {
         Bugs: 1,
         Optimisations: 1,
         walletAddress: '0xabcdef123456789',
-      }
+      },
     ];
 
     await User.insertMany(users);
@@ -54,8 +59,8 @@ const seedData = async () => {
         endDate: new Date(),
         judges: {
           leadJudge: null,
-          judges: []
-        }
+          judges: [],
+        },
       },
       {
         name: 'Competition 2',
@@ -68,9 +73,9 @@ const seedData = async () => {
         endDate: new Date(),
         judges: {
           leadJudge: null,
-          judges: []
-        }
-      }
+          judges: [],
+        },
+      },
     ];
 
     await Competition.insertMany(competitions);

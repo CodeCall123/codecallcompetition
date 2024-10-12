@@ -1,11 +1,14 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+
 const mongoose = require('mongoose');
 const User = require('./models/User');
-require('dotenv').config({ path: './.env' });
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected...'))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 const resetUserData = async () => {
   try {
@@ -14,7 +17,7 @@ const resetUserData = async () => {
       Features: 0,
       Bugs: 0,
       Optimisations: 0,
-      completedTasks: []
+      completedTasks: [],
     };
 
     await User.updateMany({}, update);
