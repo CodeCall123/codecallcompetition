@@ -299,7 +299,7 @@ const Home = () => {
         </div>
         <div className="content">
           <div className="audits-list">
-            {sortedAudits.map((audit) => {
+            {sortedAudits?.map((audit) => {
               const rewards = calculateRewards(audit.reward);
               const status = getRemainingTime(audit.startDate, audit.endDate).toLowerCase();
               return (

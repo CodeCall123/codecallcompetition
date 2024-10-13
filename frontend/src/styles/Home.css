@@ -162,6 +162,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 2rem;
 }
 
 .audit-content {
@@ -193,7 +194,6 @@
   color: white;
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .audit-image img {
@@ -393,6 +393,22 @@
 }
 
 @media (max-width: 768px) {
+  .filters{
+    flex-wrap: wrap;
+  }
+  .content{
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .audit-card {
+    gap: 1rem;
+  }
+
+  .audit-main{
+    gap: 1rem;
+  }
+
   .audit-info {
     flex-direction: row;
     justify-content: space-between;
@@ -409,6 +425,10 @@
 
   .audit-timer, .audit-status {
     align-self: center;
+  }
+
+  .side-info{
+    gap:2rem;
   }
 }
 
