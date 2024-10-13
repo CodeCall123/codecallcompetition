@@ -517,6 +517,12 @@
 
 .judges-section {
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.judges-section  > h3 {
+  white-space: nowrap;
 }
 
 .styled-button {
@@ -555,4 +561,33 @@
   100% {
       opacity: 1;
   }
+}
+
+
+@media (max-width: 768px) {
+
+   .competition-details-wrapper{
+     flex-direction: column;
+     gap: 2rem;
+     padding: 3%;
+   }
+
+   .competition-content{
+    width: 100%;
+   }
+
+   .competition-side-container{
+    flex-direction: row;
+    width: 100%;
+   }
+
+}
+
+@media (max-width: 500px){
+
+  .competition-side-container{
+    flex-direction: column;
+    width: 100%;
+   }
+
 }
