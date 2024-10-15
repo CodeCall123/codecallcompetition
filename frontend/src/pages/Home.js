@@ -348,6 +348,10 @@ const Home = () => {
                 </div>
               );
             })}
+
+            {
+              searchTerm && sortedAudits?.length === 0 && <p className='projects-search'>No projects found.</p>
+            }
           </div>
           <div className="side-info">
             <div className="info-card">
