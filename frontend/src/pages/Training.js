@@ -4,6 +4,7 @@ import { FaInfoCircle } from 'react-icons/fa';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { UserContext } from '../contexts/UserContext';
 import '../styles/Home.css';
+import SkeletonProjectCard from '../components/SkeletonProjectCard';
 
 const Training = () => {
   const [audits, setAudits] = useState([]);
@@ -15,6 +16,7 @@ const Training = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const { username, handleLogin } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAudits = async () => {
@@ -24,6 +26,7 @@ const Training = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        setIsLoading(false);
         setAudits(data);
       } catch (error) {
         console.error('Error fetching competitions:', error);
@@ -303,6 +306,8 @@ const Training = () => {
         </div>
         <div className="content">
           <div className="audits-list">
+            {!isLoading && sortedAudits.length === 0 && <h3 className="not-found-projects-text">No Trainings found</h3>}
+            {isLoading && <SkeletonProjectCard/>}
             {sortedAudits.map((audit) => {
               const rewards = calculateRewards(audit.reward);
               return (
