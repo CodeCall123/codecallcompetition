@@ -19,7 +19,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${username}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/${username}`);
         const data = response.data;
         setAvatar(data.avatar);
         setEmail(data.email);
@@ -87,7 +87,11 @@ const handleAvatarChange = async (e) => {
 
         
       };
-      await axios.put(`${process.env.REACT_APP_BACKEND_URL}/user/${username}`, updateData);
+      await axios.put(`${process.env.REACT_APP_BACKEND_URL}/users/${username}`, updateData, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('github_token')}`
+        }
+      });
       navigate(`/profile/${username}`);
     } catch (error) {
       console.error('Error updating user data', error);
