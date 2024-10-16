@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { FaGithub, FaGlobe, FaInfoCircle } from 'react-icons/fa';
+import { FaGithub, FaGlobe, FaInfoCircle} from 'react-icons/fa';
+import { PiGitPullRequestDuotone } from "react-icons/pi";
 import { UserContext } from '../contexts/UserContext';
 import { Diff, Hunk, parseDiff } from 'react-diff-view';
 import 'react-diff-view/style/index.css';
@@ -9,6 +10,7 @@ import '../styles/CompetitionDetails.css';
 import usdcIcon from '../assets/images/usdc.png';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import remarkGfm from 'remark-gfm';
+import UserPrCard from '../components/UserPrCard';
 
 const CompetitionDetails = () => {
   const { id } = useParams();
@@ -301,37 +303,6 @@ const CompetitionDetails = () => {
     ));
   };
 
-  const renderPRs = () => {
-    const userCreatedPRs = userPRs.filter(pr => pr.user.login === username);
-  
-    return userCreatedPRs.map(pr => (
-      <div key={pr.id} className="pr-container">
-        <button onClick={() => togglePR(pr.number)}>
-          <span>{pr.title}</span>
-          <div className="pr-labels">
-            {pr.labels.map(label => (
-              <span
-                key={label.id}
-                className="pr-label"
-                style={{ backgroundColor: `#${label.color}`, color: '#fff', padding: '2px 4px', borderRadius: '3px', marginRight: '5px' }}
-              >
-                {label.name}
-              </span>
-            ))}
-          </div>
-          <ChevronRightIcon className="chevron-icon" />
-        </button>
-        {expandedPRs.includes(pr.number) && prDiffs[pr.number] && (
-          <Diff viewType="split" diffType="unified" hunks={parseDiff(prDiffs[pr.number], { nearbySequences: 'zip' })[0].hunks}>
-            {(hunks) => hunks.map(hunk => (
-              <Hunk key={hunk.content} hunk={hunk} />
-            ))}
-          </Diff>
-        )}
-      </div>
-    ));
-  };
-
   const renderJudges = () => {
     if (!competition.judges) return null;
   
@@ -480,16 +451,16 @@ const CompetitionDetails = () => {
               <p className="competition-subtitle"></p>
             </div>
             <div className="live-status">
-  <span className={`blinking-dot ${getRemainingTime(competition.startDate, competition.endDate).statusMessage}`}></span>
-  <span className={`status ${getRemainingTime(competition.startDate, competition.endDate).statusMessage}`}>
-    {getRemainingTime(competition.startDate, competition.endDate).statusMessage.charAt(0).toUpperCase() + getRemainingTime(competition.startDate, competition.endDate).statusMessage.slice(1)}
-  </span>
-  {getRemainingTime(competition.startDate, competition.endDate).statusMessage !== 'ended' && (
-    <span className="countdown">
-      {countdown.replace(/\(|\)/g, '')}
-    </span>
-  )}
-</div>
+              <span className={`blinking-dot ${getRemainingTime(competition.startDate, competition.endDate).statusMessage}`}></span>
+              <span className={`status ${getRemainingTime(competition.startDate, competition.endDate).statusMessage}`}>
+                {getRemainingTime(competition.startDate, competition.endDate).statusMessage.charAt(0).toUpperCase() + getRemainingTime(competition.startDate, competition.endDate).statusMessage.slice(1)}
+              </span>
+              {getRemainingTime(competition.startDate, competition.endDate).statusMessage !== 'ended' && (
+                <span className="countdown">
+                  {countdown.replace(/\(|\)/g, '')}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div className="competition-info-container">
@@ -587,7 +558,13 @@ const CompetitionDetails = () => {
                 <a href={competition.repositoryLink} target="_blank" rel="noopener noreferrer" className="submit-code-button">
                   Go to Repository
                 </a>
-                {renderPRs()}
+                <UserPrCard 
+                  userPRs={userPRs} 
+                  username={username} 
+                  expandedPRs={expandedPRs} 
+                  togglePR={togglePR} prDiffs={prDiffs} 
+                  parseDiff={parseDiff} 
+                />
               </div>
             )}
           </div>

@@ -5,6 +5,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import usdcIcon from '../assets/images/usdc.png';
 import { UserContext } from '../contexts/UserContext';
 import '../styles/Home.css';
+import SkeletonProjectCard from '../components/SkeletonProjectCard';
 
 const Home = () => {
   const [audits, setAudits] = useState([]);
@@ -15,6 +16,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const { username, handleLogin } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAudits = async () => {
@@ -24,6 +26,7 @@ const Home = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        setIsLoading(false);
         setAudits(data);
       } catch (error) {
         console.error('Error fetching competitions:', error);
@@ -299,6 +302,8 @@ const Home = () => {
         </div>
         <div className="content">
           <div className="audits-list">
+            {!isLoading && sortedAudits.length === 0 && <h3 className="not-found-projects-text">No projects found</h3>}
+            {isLoading && <SkeletonProjectCard/>}
             {sortedAudits.map((audit) => {
               const rewards = calculateRewards(audit.reward);
               const status = getRemainingTime(audit.startDate, audit.endDate).toLowerCase();

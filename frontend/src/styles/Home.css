@@ -164,6 +164,13 @@
   width: 100%;
 }
 
+.not-found-projects-text {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
 .audit-content {
   flex: 3;
   display: flex;
