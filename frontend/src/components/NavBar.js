@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FaGithub, FaCaretDown } from 'react-icons/fa';
-import logo from '../assets/images/betalogo.png';
-import { UserContext } from '../contexts/UserContext';
+import React, { useContext } from "react";
+import { FaCaretDown, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import logo from "../assets/images/betalogo.png";
+import { UserContext } from "../contexts/UserContext";
 
 const Navbar = styled.nav`
   display: flex;
@@ -37,26 +36,6 @@ const NavLink = styled.li`
     &:hover {
       text-decoration: none;
     }
-  }
-`;
-
-const ConnectButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  background: linear-gradient(45deg, #ff6b6b, #f06543);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  color: white;
-  text-decoration: none;
-  margin-left: 2rem;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.9;
-    text-decoration: none;
-  }
-  svg {
-    margin-right: 0.5rem;
   }
 `;
 
@@ -109,13 +88,13 @@ const DropdownContent = styled.div`
   position: absolute;
   background-color: #1f1c1c;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   right: 0;
   top: 100%; /* Position below the button */
   border-radius: 5px;
   padding: 0.5rem 0; /* Adjust padding */
-  
+
   ${UserMenu}:hover & {
     display: flex;
     flex-direction: column; /* Make items appear vertically */
@@ -134,7 +113,6 @@ const DropdownItem = styled(Link)`
   }
 `;
 
-
 const LogoutItem = styled.button`
   color: white;
   padding: 0.5rem 1rem; /* Adjust padding */
@@ -152,7 +130,6 @@ const LogoutItem = styled.button`
 
 const NavBar = () => {
   const { username, handleLogin, handleLogout } = useContext(UserContext);
-  const navigate = useNavigate();
 
   return (
     <Navbar>
@@ -173,7 +150,11 @@ const NavBar = () => {
           <Link to="/judging">Reviewing</Link>
         </NavLink>
         <NavLink>
-          <a href="https://codecall.gitbook.io/code-call" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://codecall.gitbook.io/code-call"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Documentation
           </a>
         </NavLink>
@@ -185,8 +166,12 @@ const NavBar = () => {
                 <FaCaretDown />
               </DropdownButton>
               <DropdownContent>
-                <DropdownItem to={`/profile/${username}`}>My Profile</DropdownItem>
-                <DropdownItem to={`/edit-profile/${username}`}>Edit Profile</DropdownItem>
+                <DropdownItem to={`/profile/${username}`}>
+                  My Profile
+                </DropdownItem>
+                <DropdownItem to={`/edit-profile/${username}`}>
+                  Edit Profile
+                </DropdownItem>
                 <LogoutItem onClick={handleLogout}>Logout</LogoutItem>
               </DropdownContent>
             </UserMenu>

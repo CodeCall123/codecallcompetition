@@ -7,3 +7,4 @@ REACT_APP_MOONPAY_PUBLIC_KEY=
 MONGO_URI=
 REACT_APP_REDIRECT_URI_Local=http://localhost:3000/auth/callback
 REACT_APP_BACKEND_URL_Local=http://localhost:5001
+GENERATE_SOURCEMAP=false
