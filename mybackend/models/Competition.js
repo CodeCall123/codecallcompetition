@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const User = require('./User');
+const Notification = require('./Notification');
 
 const competitionSchema = new mongoose.Schema({
   name: String,
@@ -45,6 +47,34 @@ const competitionSchema = new mongoose.Schema({
     }
   ]
 });
+
+competitionSchema.post('save', async function (document) {
+
+  if(this.isModified('status')) {
+
+    // optimize it later
+    const users = await User.find({'approvedSubmissions.competitionId': document._id});
+    const status_updated_message = `Competition ${document.name}'s status changed to ${document.status}`;
+
+    users.forEach( async (user) => {
+      await Notification.create({message: status_updated_message, user: user._id });
+    });
+  }
+
+});
+
+competitionSchema.post('save', async function (document) {
+  document.submissions.forEach( async (sub) => {
+    if(sub.approved) {
+
+      const user = await User.findOne({'approvedSubmissions.competitionId': document._id});
+      const approved_message = `Your submission for competition ${document.name} has been approved`;
+
+      await Notification.create({message: approved_message, user: user._id});
+
+    }
+  })
+})
 
 const Competition = mongoose.model('Competition', competitionSchema);
 

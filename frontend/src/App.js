@@ -20,27 +20,27 @@ function App() {
   return (
     <Router>
       <UserProvider>
-        <MoonPayProvider apiKey={process.env.REACT_APP_MOONPAY_PUBLIC_KEY} debug>
-          <div className="App">
-            <NavBar />
-            <div className="App-content">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/training" element={<Training />} />
-                <Route path="/judging" element={<Judging />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/profile/:username" element={<Profile />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/edit-profile/:username" element={<EditProfile />} />
-                <Route path="/competition/:id" element={<CompetitionDetails />} />
-                <Route path="/training/:id" element={<TrainingDetails />} />
-                <Route path="/auth" element={<AuthPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/add-competition" element={<AddCompetition />} />
-              </Routes>
-            </div>
+        {/* <MoonPayProvider apiKey={process.env.REACT_APP_MOONPAY_PUBLIC_KEY} debug> */}
+        <div className="App">
+          <NavBar />
+          <div className="App-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/training" element={<Training />} />
+              <Route path="/judging" element={<Judging />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/profile/:username" element={<Profile />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/edit-profile/:username" element={<EditProfile />} />
+              <Route path="/competition/:id" element={<CompetitionDetails />} />
+              <Route path="/training/:id" element={<TrainingDetails />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/add-competition" element={<AddCompetition />} />
+            </Routes>
           </div>
-        </MoonPayProvider>
+        </div>
+        {/* </MoonPayProvider> */}
       </UserProvider>
     </Router>
   );
