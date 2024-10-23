@@ -67,6 +67,11 @@
   margin-left: 10px;
 }
 
+.projects-search{
+  color: white;
+  font-size: 1rem;
+}
+
 .audit-name-tags {
   display: flex;
   flex-direction: column;
