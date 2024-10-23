@@ -279,7 +279,7 @@ const Profile = () => {
 
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${username}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/${username}`);
         setUserData(response.data);
       } catch (error) {
         console.error('Error fetching user data', error);
@@ -291,7 +291,12 @@ const Profile = () => {
   }, [username]);
   const fetchUsdcBalance = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${username}/usdc-balance`);
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/${username}/usdc-balance`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('github_token')}`
+        },
+        withCredentials: true
+      });
       setUsdcBalance(response.data.usdcBalance);
     } catch (error) {
       console.error('Error fetching USDC balance', error);

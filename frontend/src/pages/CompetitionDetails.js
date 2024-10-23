@@ -27,7 +27,7 @@ const CompetitionDetails = () => {
   useEffect(() => {
     const fetchCompetition = async () => {
       try {
-        const response = await fetch(`https://codecallbackend.vercel.app/competitions/${id}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/competitions/${id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -370,7 +370,7 @@ const CompetitionDetails = () => {
 
   const handleAddJudge = async (type) => {
     try {
-      const response = await fetch(`https://codecallbackend.vercel.app/competitions/${id}/addJudge`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/competitions/${id}/addJudge`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -395,9 +395,9 @@ const CompetitionDetails = () => {
     }
   };
 
-  const handleBecomeJudge = async () => {
+  const handleBecomeJudge = async () => { 
     try {
-      const response = await fetch(`https://codecallbackend.vercel.app/competitions/${id}/becomeJudge`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/competitions/${id}/becomeJudge`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

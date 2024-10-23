@@ -55,7 +55,7 @@ const TrainingDetails = () => {
   useEffect(() => {
     const fetchTraining = async () => {
       try {
-        const response = await fetch(`https://codecallbackend.vercel.app/training/${id}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/training/${id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -264,7 +264,7 @@ const TrainingDetails = () => {
   const runCode = () => {
     const executePythonCode = async (code) => {
       try {
-        const response = await fetch('https://codecallbackend.vercel.app/execute-python', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/execute-python`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

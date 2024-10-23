@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <UserProvider>
-        <MoonPayProvider apiKey={process.env.REACT_APP_MOONPAY_PUBLIC_KEY} debug>
+        {/* <MoonPayProvider apiKey={process.env.REACT_APP_MOONPAY_PUBLIC_KEY} debug> */}
           <div className="App">
             <NavBar />
             <div className="App-content">
@@ -40,7 +40,7 @@ function App() {
               </Routes>
             </div>
           </div>
-        </MoonPayProvider>
+        {/* </MoonPayProvider> */}
       </UserProvider>
     </Router>
   );

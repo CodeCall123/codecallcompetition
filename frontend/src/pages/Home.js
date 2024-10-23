@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchAudits = async () => {
       try {
-        const response = await fetch('https://codecallbackend.vercel.app/competitions');
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/competitions`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
